@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Secrets
+encryption.key
+
+# Database
+database/loan.db
+
+# Uploaded and generated files
+uploads/
+downloads/
+secure_storage/
+cloud_blocks/
+secure_cloud_blocks/
+
+# Test-generated files
+encrypted_sample.bin
+decrypted_sample.txt
+reconstructed_sample.txt
+
+# Environment files
+.env
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db

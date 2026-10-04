@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Secure Documents | LoanGuard AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            LoanGuard AI
+        </div>
+
+        <div class="nav-links">
+
+            <a href="/">Home</a>
+
+            <a href="/history">
+                Applications
+            </a>
+
+            <a href="/upload">
+                Documents
+            </a>
+
+            <a href="/cloud">
+                Cloud Storage
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Main Content -->
+
+    <main class="container">
+
+        <!-- Heading -->
+
+        <section class="hero">
+
+            <h1>Secure Loan Documents</h1>
+
+            <p>
+                Upload, encrypt and securely store
+                applicant documents.
+            </p>
+
+        </section>
+
+
+        {% if success %}
+
+        <!-- Success Card -->
+
+        <section class="card result-card">
+
+            <h2>✓ Document Uploaded Successfully</h2>
+
+            <p>
+                Your document has been divided into blocks
+                and encrypted before storage.
+            </p>
+
+            <br>
+
+
+            <div class="action-card">
+
+                <h3>Document Details</h3>
+
+                <p>
+                    <strong>Application ID:</strong>
+                    {{ application_id }}
+                </p>
+
+                <p>
+                    <strong>Document:</strong>
+                    {{ filename }}
+                </p>
+
+                <p>
+                    <strong>Security Status:</strong>
+                    Encrypted
+                </p>
+
+            </div>
+
+            <br>
+
+
+            <a href="/download/{{ application_id }}/{{ filename }}"
+               class="btn">
+
+                Download Secure Document
+
+            </a>
+
+            <br><br>
+
+            <a href="/upload"
+               class="btn btn-secondary">
+
+                Upload Another Document
+
+            </a>
+
+            <br><br>
+
+            <a href="/cloud"
+               class="btn btn-secondary">
+
+                View Cloud Storage
+
+            </a>
+
+        </section>
+
+
+        {% else %}
+
+        <!-- Upload Information -->
+
+        <section class="actions">
+
+            <div class="action-card">
+
+                <h3>1. Upload</h3>
+
+                <p>
+                    Select a loan-related document
+                    from your computer.
+                </p>
+
+            </div>
+
+
+            <div class="action-card">
+
+                <h3>2. Split & Encrypt</h3>
+
+                <p>
+                    The document is divided into
+                    blocks and encrypted.
+                </p>
+
+            </div>
+
+
+            <div class="action-card">
+
+                <h3>3. Secure Storage</h3>
+
+                <p>
+                    Encrypted blocks are stored securely
+                    and can later be reconstructed.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Upload Form -->
+
+        <section class="card">
+
+            <h2>Upload Loan Document</h2>
+
+            <form action="/upload"
+                  method="POST"
+                  enctype="multipart/form-data">
+
+                <div class="form-grid">
+
+                    <!-- Application ID -->
+
+                    <div class="form-group">
+
+                        <label for="application_id">
+                            Application ID
+                        </label>
+
+                        <input
+                            type="number"
+                            id="application_id"
+                            name="application_id"
+                            placeholder="Enter application ID"
+                            min="1"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Document -->
+
+                    <div class="form-group">
+
+                        <label for="document">
+                            Select Document
+                        </label>
+
+                        <input
+                            type="file"
+                            id="document"
+                            name="document"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+                <br><br>
+
+
+                <button type="submit"
+                        class="btn">
+
+                    Upload & Secure Document
+
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- Security Information -->
+
+        <section class="card">
+
+            <h2>Document Security</h2>
+
+            <div class="reasoning">
+
+                <ul>
+
+                    <li>
+                        Documents are divided into 1 MB blocks.
+                    </li>
+
+                    <li>
+                        Each block is encrypted before storage.
+                    </li>
+
+                    <li>
+                        Encrypted blocks are reconstructed
+                        during secure download.
+                    </li>
+
+                    <li>
+                        The system uses authenticated
+                        symmetric encryption through Fernet.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+        {% endif %}
+
+
+        <!-- Navigation -->
+
+        <section class="card">
+
+            <a href="/" class="btn">
+                Back to Home
+            </a>
+
+            &nbsp;
+
+            <a href="/history"
+               class="btn btn-secondary">
+
+                Application History
+
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer class="footer">
+
+        <p>
+            LoanGuard AI | Cloud-Based AI Bank Loan Eligibility Expert System
+        </p>
+
+        <p>
+            AI Decision Support • Secure Document Storage • Cloud Computing
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

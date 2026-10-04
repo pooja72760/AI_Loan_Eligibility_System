@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Application History | LoanGuard AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            LoanGuard AI
+        </div>
+
+        <div class="nav-links">
+
+            <a href="/">Home</a>
+
+            <a href="/history">
+                Applications
+            </a>
+
+            <a href="/upload">
+                Documents
+            </a>
+
+            <a href="/cloud">
+                Cloud Storage
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Main Content -->
+
+    <main class="container">
+
+        <!-- Heading -->
+
+        <section class="hero">
+
+            <h1>Application History</h1>
+
+            <p>
+                Review previously evaluated loan applications
+            </p>
+
+        </section>
+
+
+        <!-- Application Table -->
+
+        <section class="card">
+
+            <h2>Loan Applications</h2>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+
+                            <th>Age</th>
+
+                            <th>Income</th>
+
+                            <th>Credit Score</th>
+
+                            <th>Existing Loan</th>
+
+                            <th>Repayment</th>
+
+                            <th>Decision</th>
+
+                            <th>Risk</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        {% for application in applications %}
+
+                        <tr>
+
+                            <td>
+                                #{{ application["id"] }}
+                            </td>
+
+                            <td>
+                                {{ application["age"] }}
+                            </td>
+
+                            <td>
+                                ₹{{ application["income"] }}
+                            </td>
+
+                            <td>
+                                {{ application["credit_score"] }}
+                            </td>
+
+                            <td>
+                                {{ application["existing_loan"] }}
+                            </td>
+
+                            <td>
+                                {{ application["repayment_history"] }}
+                            </td>
+
+                            <td>
+
+                                {% if application["decision"] == "ELIGIBLE" %}
+
+                                    <strong class="eligible">
+                                        ✓ ELIGIBLE
+                                    </strong>
+
+                                {% else %}
+
+                                    <strong class="not-eligible">
+                                        ✕ NOT ELIGIBLE
+                                    </strong>
+
+                                {% endif %}
+
+                            </td>
+
+                            <td>
+
+                                <span class="risk">
+                                    {{ application["risk_level"] }}
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+                        {% else %}
+
+                        <tr>
+
+                            <td colspan="8"
+                                style="text-align:center; padding:30px;">
+
+                                No loan applications found.
+
+                            </td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- Actions -->
+
+        <section class="card">
+
+            <h2>Application Management</h2>
+
+            <p style="margin-bottom:20px; color:#64748b;">
+
+                Submit a new application or manage
+                supporting loan documents.
+
+            </p>
+
+
+            <a href="/" class="btn">
+                New Application
+            </a>
+
+            &nbsp;
+
+            <a href="/upload"
+               class="btn btn-secondary">
+                Upload Document
+            </a>
+
+            &nbsp;
+
+            <a href="/cloud"
+               class="btn btn-secondary">
+                Cloud Storage
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer class="footer">
+
+        <p>
+            LoanGuard AI | Cloud-Based AI Bank Loan Eligibility Expert System
+        </p>
+
+        <p>
+            AI Decision Support • Secure Document Storage • Cloud Computing
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

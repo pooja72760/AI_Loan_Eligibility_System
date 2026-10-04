@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Loan Assessment Result | LoanGuard AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+    <!-- Navigation -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            LoanGuard AI
+        </div>
+
+        <div class="nav-links">
+
+            <a href="/">Home</a>
+
+            <a href="/history">
+                Applications
+            </a>
+
+            <a href="/upload">
+                Documents
+            </a>
+
+            <a href="/cloud">
+                Cloud Storage
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Main -->
+
+    <main class="container">
+
+        <!-- Page Heading -->
+
+        <section class="hero">
+
+            <h1>Loan Assessment Result</h1>
+
+            <p>
+                AI-powered analysis of the submitted loan application
+            </p>
+
+        </section>
+
+
+        <!-- Decision Card -->
+
+        <section class="card result-card">
+
+            <h2>Final Loan Decision</h2>
+
+
+            {% if decision == "ELIGIBLE" %}
+
+                <div class="decision eligible">
+                    ✓ {{ decision }}
+                </div>
+
+                <p>
+                    The applicant satisfies the defined
+                    loan eligibility rules.
+                </p>
+
+            {% else %}
+
+                <div class="decision not-eligible">
+                    ✕ {{ decision }}
+                </div>
+
+                <p>
+                    The applicant does not satisfy
+                    all required eligibility rules.
+                </p>
+
+            {% endif %}
+
+
+            <br>
+
+
+            <h3>
+                Risk Classification
+            </h3>
+
+            <br>
+
+            <span class="risk">
+                {{ risk }} RISK
+            </span>
+
+        </section>
+
+
+        <!-- AI Inference -->
+
+        <section class="card">
+
+            <h2>AI Inference Analysis</h2>
+
+
+            <div class="actions">
+
+                <div class="action-card">
+
+                    <h3>Forward Chaining</h3>
+
+                    <p>
+                        Starts with the applicant's
+                        facts and applies rules
+                        to reach a conclusion.
+                    </p>
+
+                    <strong>
+                        {{ forward_result }}
+                    </strong>
+
+                </div>
+
+
+                <div class="action-card">
+
+                    <h3>Backward Chaining</h3>
+
+                    <p>
+                        Starts with the eligibility
+                        goal and verifies the required
+                        conditions.
+                    </p>
+
+                    <strong>
+                        {{ backward_result }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Reasoning -->
+
+        <section class="card">
+
+            <h2>AI Decision Reasoning</h2>
+
+            <p>
+                The following rules were evaluated
+                by the expert system:
+            </p>
+
+
+            <div class="reasoning">
+
+                <ul>
+
+                    {% for reason in reasons %}
+
+                        <li>
+                            {{ reason }}
+                        </li>
+
+                    {% endfor %}
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- Actions -->
+
+        <section class="card">
+
+            <h2>Next Actions</h2>
+
+            <a href="/" class="btn">
+                Check Another Application
+            </a>
+
+            &nbsp;
+
+            <a href="/history"
+               class="btn btn-secondary">
+                View Application History
+            </a>
+
+            &nbsp;
+
+            <a href="/upload"
+               class="btn btn-secondary">
+                Upload Loan Document
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer class="footer">
+
+        <p>
+            LoanGuard AI | Cloud-Based AI Bank Loan Eligibility Expert System
+        </p>
+
+        <p>
+            AI Decision Support • Secure Document Storage • Cloud Computing
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

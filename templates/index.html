@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LoanGuard AI | Loan Eligibility System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            LoanGuard AI
+        </div>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/history">Applications</a>
+            <a href="/upload">Documents</a>
+            <a href="/cloud">Cloud Storage</a>
+        </div>
+
+    </nav>
+
+
+    <!-- Main Content -->
+
+    <main class="container">
+
+        <!-- Hero Section -->
+
+        <section class="hero">
+
+            <h1>AI-Based Bank Loan Eligibility</h1>
+
+            <p>
+                Intelligent loan assessment using rule-based
+                expert systems and secure cloud storage.
+            </p>
+
+        </section>
+
+
+        <!-- Loan Assessment Form -->
+
+        <section class="card">
+
+            <h2>Loan Eligibility Assessment</h2>
+
+            <form action="/check" method="POST">
+
+                <div class="form-grid">
+
+                    <!-- Age -->
+
+                    <div class="form-group">
+
+                        <label for="age">
+                            Applicant Age
+                        </label>
+
+                        <input
+                            type="number"
+                            id="age"
+                            name="age"
+                            placeholder="Enter age"
+                            min="1"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Income -->
+
+                    <div class="form-group">
+
+                        <label for="income">
+                            Monthly Income (₹)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="income"
+                            name="income"
+                            placeholder="Enter monthly income"
+                            min="0"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Credit Score -->
+
+                    <div class="form-group">
+
+                        <label for="credit_score">
+                            Credit Score
+                        </label>
+
+                        <input
+                            type="number"
+                            id="credit_score"
+                            name="credit_score"
+                            placeholder="Enter credit score"
+                            min="0"
+                            max="900"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Existing Loan -->
+
+                    <div class="form-group">
+
+                        <label for="existing_loan">
+                            Existing Loan
+                        </label>
+
+                        <select
+                            id="existing_loan"
+                            name="existing_loan"
+                            required
+                        >
+
+                            <option value="No">
+                                No
+                            </option>
+
+                            <option value="Yes">
+                                Yes
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Repayment History -->
+
+                    <div class="form-group">
+
+                        <label for="repayment_history">
+                            Repayment History
+                        </label>
+
+                        <select
+                            id="repayment_history"
+                            name="repayment_history"
+                            required
+                        >
+
+                            <option value="Good">
+                                Good
+                            </option>
+
+                            <option value="Average">
+                                Average
+                            </option>
+
+                            <option value="Poor">
+                                Poor
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <br><br>
+
+
+                <!-- Submit -->
+
+                <button type="submit" class="btn">
+                    Check Loan Eligibility
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- Features -->
+
+        <section class="actions">
+
+            <!-- AI Expert System -->
+
+            <div class="action-card">
+
+                <h3>AI Expert System</h3>
+
+                <p>
+                    Evaluate applicants using forward
+                    and backward chaining.
+                </p>
+
+                <a href="/" class="btn">
+                    Assess Loan
+                </a>
+
+            </div>
+
+
+            <!-- Application History -->
+
+            <div class="action-card">
+
+                <h3>Application History</h3>
+
+                <p>
+                    View previously evaluated loan
+                    applications and their risk levels.
+                </p>
+
+                <a href="/history" class="btn btn-secondary">
+                    View History
+                </a>
+
+            </div>
+
+
+            <!-- Secure Documents -->
+
+            <div class="action-card">
+
+                <h3>Secure Cloud Storage</h3>
+
+                <p>
+                    Upload loan documents, split them
+                    into blocks and encrypt them securely.
+                </p>
+
+                <a href="/cloud" class="btn btn-secondary">
+                    Open Cloud Storage
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer class="footer">
+
+        <p>
+            LoanGuard AI &nbsp;|&nbsp;
+            Cloud-Based AI Bank Loan Eligibility Expert System
+        </p>
+
+        <p>
+            AI Decision Support • Secure Document Storage • Cloud Computing
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

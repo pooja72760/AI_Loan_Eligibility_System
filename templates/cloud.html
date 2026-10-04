@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Cloud Storage | LoanGuard AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            LoanGuard AI
+        </div>
+
+        <div class="nav-links">
+
+            <a href="/">Home</a>
+
+            <a href="/history">
+                Applications
+            </a>
+
+            <a href="/upload">
+                Documents
+            </a>
+
+            <a href="/cloud">
+                Cloud Storage
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Main Content -->
+
+    <main class="container">
+
+        <!-- Heading -->
+
+        <section class="hero">
+
+            <h1>Secure Cloud Storage</h1>
+
+            <p>
+                Manage encrypted loan documents stored
+                as secure data blocks.
+            </p>
+
+        </section>
+
+
+        <!-- Storage Overview -->
+
+        <section class="actions">
+
+            <div class="action-card">
+
+                <h3>☁ Secure Storage</h3>
+
+                <p>
+                    Loan documents are stored in
+                    encrypted form.
+                </p>
+
+            </div>
+
+
+            <div class="action-card">
+
+                <h3>🔐 Encryption</h3>
+
+                <p>
+                    Each document block is protected
+                    using authenticated encryption.
+                </p>
+
+            </div>
+
+
+            <div class="action-card">
+
+                <h3>📦 Block Storage</h3>
+
+                <p>
+                    Large documents are divided into
+                    manageable 1 MB blocks.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Cloud Files -->
+
+        <section class="card">
+
+            <h2>Stored Documents</h2>
+
+            {% if cloud_files %}
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Application ID</th>
+
+                            <th>Document</th>
+
+                            <th>Blocks</th>
+
+                            <th>Storage Status</th>
+
+                            <th>Security</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        {% for file in cloud_files %}
+
+                        <tr>
+
+                            <td>
+                                #{{ file["application"] }}
+                            </td>
+
+                            <td>
+                                {{ file["filename"] }}
+                            </td>
+
+                            <td>
+                                {{ file["blocks"] }}
+                            </td>
+
+                            <td>
+                                <strong>
+                                    Stored
+                                </strong>
+                            </td>
+
+                            <td>
+                                <span class="risk">
+                                    Encrypted
+                                </span>
+                            </td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            {% else %}
+
+            <!-- Empty State -->
+
+            <div class="action-card">
+
+                <h3>No Documents Stored</h3>
+
+                <p>
+                    No encrypted loan documents are
+                    currently available in storage.
+                </p>
+
+                <a href="/upload"
+                   class="btn">
+
+                    Upload First Document
+
+                </a>
+
+            </div>
+
+            {% endif %}
+
+        </section>
+
+
+        <!-- How It Works -->
+
+        <section class="card">
+
+            <h2>How Secure Cloud Storage Works</h2>
+
+            <div class="actions">
+
+                <div class="action-card">
+
+                    <h3>01</h3>
+
+                    <p>
+                        Applicant uploads a loan document.
+                    </p>
+
+                </div>
+
+
+                <div class="action-card">
+
+                    <h3>02</h3>
+
+                    <p>
+                        The document is divided into
+                        1 MB blocks.
+                    </p>
+
+                </div>
+
+
+                <div class="action-card">
+
+                    <h3>03</h3>
+
+                    <p>
+                        Each block is encrypted before
+                        being stored.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <br>
+
+            <div class="action-card">
+
+                <h3>04 — Secure Reconstruction</h3>
+
+                <p>
+                    During download, encrypted blocks are
+                    decrypted and reconstructed to recreate
+                    the original document.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Actions -->
+
+        <section class="card">
+
+            <h2>Cloud Management</h2>
+
+            <a href="/upload"
+               class="btn">
+
+                Upload Document
+
+            </a>
+
+            &nbsp;
+
+            <a href="/history"
+               class="btn btn-secondary">
+
+                Application History
+
+            </a>
+
+            &nbsp;
+
+            <a href="/"
+               class="btn btn-secondary">
+
+                Back to Home
+
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer class="footer">
+
+        <p>
+            LoanGuard AI | Cloud-Based AI Bank Loan Eligibility Expert System
+        </p>
+
+        <p>
+            AI Decision Support • Secure Document Storage • Cloud Computing
+        </p>
+
+    </footer>
+
+</body>
+
+</html>
