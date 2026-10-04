@@ -7,6 +7,9 @@ KEY_FILE = "encryption.key"
 
 def generate_key():
 
+    if os.getenv("FERNET_KEY"):
+        return
+
     if not os.path.exists(KEY_FILE):
 
         key = Fernet.generate_key()
@@ -17,13 +20,19 @@ def generate_key():
 
 def load_key():
 
+    environment_key = os.getenv("FERNET_KEY")
+
+    if environment_key:
+        return environment_key.encode()
+
+    if not os.path.exists(KEY_FILE):
+        generate_key()
+
     with open(KEY_FILE, "rb") as file:
         return file.read()
 
 
 def encrypt_file(input_file, output_file):
-
-    generate_key()
 
     key = load_key()
 

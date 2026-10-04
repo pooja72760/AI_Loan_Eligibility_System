@@ -1,10 +1,13 @@
 import sqlite3
+import os
 
 
 DATABASE = "database/loan.db"
 
 
 def create_database():
+
+    os.makedirs("database", exist_ok=True)
 
     conn = sqlite3.connect(DATABASE)
 
@@ -37,6 +40,8 @@ def save_application(
     risk_level
 ):
 
+    os.makedirs("database", exist_ok=True)
+
     conn = sqlite3.connect(DATABASE)
 
     cursor = conn.cursor()
@@ -58,10 +63,14 @@ def save_application(
 
     conn.commit()
     conn.close()
-    
+
+
 def get_applications():
 
+    os.makedirs("database", exist_ok=True)
+
     conn = sqlite3.connect(DATABASE)
+
     conn.row_factory = sqlite3.Row
 
     cursor = conn.cursor()
@@ -75,4 +84,4 @@ def get_applications():
 
     conn.close()
 
-    return applications    
+    return applications
