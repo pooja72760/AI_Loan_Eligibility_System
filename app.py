@@ -91,11 +91,13 @@ def upload_document():
         document = request.files["document"]
 
         if document:
+            import os
 
             filename = document.filename
 
-            input_path = "uploads/" + filename
+            os.makedirs("uploads", exist_ok=True)
 
+            input_path = os.path.join("uploads", filename)
             document.save(input_path)
 
             secure_folder = "secure_storage/application_" + application_id
